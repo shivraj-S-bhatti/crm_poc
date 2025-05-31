@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import NavBar from './NavBar';
-import { Box, Container } from '@mui/material';
+import { Box, Container, Toolbar } from '@mui/material';
 
 const Layout: React.FC = () => {
   return (
@@ -12,11 +12,11 @@ const Layout: React.FC = () => {
         sx={{
           flexGrow: 1,
           p: 3,
-          width: { sm: `calc(100% - 240px)` } // Assuming NavBar width is 240px
+          width: { sm: `calc(100% - 240px)` }, // Assuming Drawer width is 240px
+          marginLeft: '240px', // Ensure main content is to the right of the permanent drawer
         }}
       >
-        {/* Placeholder for a Toolbar if needed, to prevent content from being hidden behind a top app bar */}
-        {/* <Toolbar /> */}
+        <Toolbar /> {/* This pushes content below the AppBar */}
         <Container maxWidth="lg">
           <Outlet />
         </Container>

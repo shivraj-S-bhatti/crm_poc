@@ -1,14 +1,13 @@
-import React from 'react';
-import { Typography } from '@mui/material';
+import React from "react";
+import { Box, Typography } from "@mui/material";
 
-const Dashboard: React.FC = () => {
+export default function Dashboard() {
   return (
-    <div>
-      <Typography variant="h4">Dashboard</Typography>
-      <Typography>Welcome, Acme Distributor!</Typography>
-      {/* Placeholder for other dashboard elements */}
-    </div>
+    <Box>
+      <Typography variant="h4" gutterBottom>
+        Dashboard
+      </Typography>
+      {/* Phase 3 will add “Current ROI,” “Next Submission,” etc. */}
+    </Box>
   );
-};
-
-export default Dashboard; 
+} 

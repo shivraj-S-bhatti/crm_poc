@@ -1,26 +1,22 @@
 import React from 'react';
-import { Typography, Button, Container, Box } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 
-const NotFound: React.FC = () => {
+export default function NotFound() {
   return (
-    <Container component="main" maxWidth="sm" sx={{ textAlign: 'center', mt: 8 }}>
-      <Box>
-        <Typography variant="h1" component="h2" gutterBottom>
-          404
-        </Typography>
-        <Typography variant="h5" gutterBottom>
-          Page Not Found
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          The page you are looking for does not exist.
-        </Typography>
-        <Button component={RouterLink} to="/dashboard" variant="contained" sx={{ mt: 3 }}>
-          Go to Dashboard
-        </Button>
-      </Box>
-    </Container>
+    <Box sx={{ textAlign: 'center', mt: 8, p: 3 }}>
+      <Typography variant="h3" color="error" gutterBottom>
+        404
+      </Typography>
+      <Typography variant="h6" gutterBottom>
+        Page Not Found
+      </Typography>
+      <Typography variant="body1" gutterBottom sx={{ mb: 3 }}>
+        Sorry, the page you are looking for does not exist or may have been moved.
+      </Typography>
+      <Button component={RouterLink} to="/dashboard" variant="contained" color="primary">
+        Go to Dashboard
+      </Button>
+    </Box>
   );
-};
-
-export default NotFound; 
+} 

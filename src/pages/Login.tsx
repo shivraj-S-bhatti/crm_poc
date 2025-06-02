@@ -1,53 +1,48 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, TextField, Container, Typography, Box, Paper } from '@mui/material';
+import { Box, Button, TextField, Typography, Paper } from '@mui/material';
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
 
-  const handleSignIn = () => {
-    // Mock sign-in, navigate to dashboard
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     navigate('/dashboard');
   };
 
   return (
-    <Container component="main" maxWidth="xs">
-      <Paper elevation={3} sx={{ marginTop: 8, padding: 4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <Typography component="h1" variant="h5">
-          ROI CRM Portal Login
+    <Box
+      sx={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        bgcolor: 'background.default', // This will come from the theme
+      }}
+    >
+      <Paper
+        elevation={3}
+        sx={{
+          p: 4,
+          width: 360,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2, // MUI uses theme.spacing for gap, so gap: 2 means 2 * theme.spacing (e.g. 16px)
+        }}
+      >
+        <Typography variant="h5" align="center">
+          ROI PORTAL
         </Typography>
-        <Box component="form" onSubmit={(e) => { e.preventDefault(); handleSignIn(); }} sx={{ mt: 1 }}>
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="wdCode"
-            label="WD Code (Username)"
-            name="wdCode"
-            autoComplete="username"
-            autoFocus
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            Sign In
+
+        <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+          <TextField label="USER ID" variant="outlined" required fullWidth InputLabelProps={{ shrink: true }} />
+          <TextField label="PASSWORD" type="password" variant="outlined" required fullWidth InputLabelProps={{ shrink: true }} />
+          <Button type="submit" variant="contained" color="primary" fullWidth>
+            LOGIN
           </Button>
         </Box>
       </Paper>
-    </Container>
+    </Box>
   );
 };
 

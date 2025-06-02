@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react"; // Unused React import
 import { Box, Typography } from "@mui/material";
 
 export default function Dashboard() {

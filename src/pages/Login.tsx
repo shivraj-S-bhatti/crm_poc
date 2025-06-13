@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, Button, TextField, Typography, Paper } from '@mui/material';
+import { Box, Button, TextField, Typography, Paper, Link } from '@mui/material';
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -24,22 +24,64 @@ const Login: React.FC = () => {
         elevation={3}
         sx={{
           p: 4,
-          width: 360,
+          width: 400,
           display: 'flex',
           flexDirection: 'column',
-          gap: 2, // MUI uses theme.spacing for gap, so gap: 2 means 2 * theme.spacing (e.g. 16px)
+          gap: 3,
+          alignItems: 'center',
         }}
       >
-        <Typography variant="h5" align="center">
+        <Box sx={{ mb: 2 }}>
+          <img 
+            src="/itc-logo.png" 
+            alt="ITC Enduring Values" 
+            style={{ width: '200px', height: 'auto' }}
+          />
+        </Box>
+
+        <Typography variant="h5" align="center" sx={{ mb: 2 }}>
           ROI PORTAL
         </Typography>
 
-        <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-          <TextField label="USER ID" variant="outlined" required fullWidth InputLabelProps={{ shrink: true }} />
-          <TextField label="PASSWORD" type="password" variant="outlined" required fullWidth InputLabelProps={{ shrink: true }} />
-          <Button type="submit" variant="contained" color="primary" fullWidth>
+        <Box component="form" onSubmit={handleSubmit} sx={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 2 }}>
+          <TextField 
+            label="USER ID" 
+            variant="outlined" 
+            required 
+            fullWidth 
+            InputLabelProps={{ shrink: true }} 
+          />
+          <TextField 
+            label="PASSWORD" 
+            type="password" 
+            variant="outlined" 
+            required 
+            fullWidth 
+            InputLabelProps={{ shrink: true }} 
+          />
+          <Button 
+            type="submit" 
+            variant="contained" 
+            color="primary" 
+            fullWidth
+            sx={{ mt: 1 }}
+          >
             LOGIN
           </Button>
+          <Link 
+            href="#" 
+            onClick={(e) => {
+              e.preventDefault();
+              // Handle forgot password
+            }}
+            sx={{ 
+              textAlign: 'center', 
+              textDecoration: 'none',
+              '&:hover': { textDecoration: 'underline' }
+            }}
+          >
+            Forgot Password?
+          </Link>
         </Box>
       </Paper>
     </Box>

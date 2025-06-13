@@ -11,6 +11,7 @@ import {
   Button,
   Grid,
   TableContainer,
+  TextField,
 } from '@mui/material';
 
 import {
@@ -34,9 +35,6 @@ const ROIEntry: React.FC = () => {
         <Typography variant="h5" gutterBottom sx={{ mb: 2 }}>
           TURNOVER & EARNING
         </Typography>
-        <Typography variant="subtitle2" gutterBottom>
-          (FORMULA FOR GP= BUSINESS SIZE X MARGIN%/100)
-        </Typography>
         <TableContainer component={Paper} variant="elevation" elevation={0}>
           <Table size="small">
             <TableHead>
@@ -51,8 +49,28 @@ const ROIEntry: React.FC = () => {
               {turnoverData.map((row, idx) => (
                 <TableRow key={idx}>
                   <TableCell component="th" scope="row">{row.category}</TableCell>
-                  <TableCell align="right">{row.businessSize}</TableCell>
-                  <TableCell align="right">{row.marginPct}</TableCell>
+                  <TableCell align="right">
+                    <TextField
+                      type="number"
+                      value={row.businessSize}
+                      onChange={(e) => {
+                        // Handle business size change
+                      }}
+                      size="small"
+                      sx={{ width: '120px' }}
+                    />
+                  </TableCell>
+                  <TableCell align="right">
+                    <TextField
+                      type="number"
+                      value={row.marginPct}
+                      onChange={(e) => {
+                        // Handle margin change
+                      }}
+                      size="small"
+                      sx={{ width: '120px' }}
+                    />
+                  </TableCell>
                   <TableCell align="right">{row.grossProfit}</TableCell>
                 </TableRow>
               ))}
@@ -72,9 +90,6 @@ const ROIEntry: React.FC = () => {
         <Typography variant="h5" gutterBottom sx={{ mb: 2 }}>
           INVESTMENT
         </Typography>
-        <Typography variant="subtitle2" gutterBottom>
-          (FORMULA FOR NO OF DAYS = AMOUNT/ TOTAL BUSI SIZE * 30 )
-        </Typography>
         <TableContainer component={Paper} variant="elevation" elevation={0}>
           <Table size="small">
             <TableHead>
@@ -88,8 +103,28 @@ const ROIEntry: React.FC = () => {
               {investmentData.map((row, idx) => (
                 <TableRow key={idx}>
                   <TableCell component="th" scope="row">{row.item}</TableCell>
-                  <TableCell align="right">{row.noOfDays}</TableCell>
-                  <TableCell align="right">{row.amount}</TableCell>
+                  <TableCell align="right">
+                    <TextField
+                      type="number"
+                      value={row.noOfDays}
+                      onChange={(e) => {
+                        // Handle days change
+                      }}
+                      size="small"
+                      sx={{ width: '120px' }}
+                    />
+                  </TableCell>
+                  <TableCell align="right">
+                    <TextField
+                      type="number"
+                      value={row.amount}
+                      onChange={(e) => {
+                        // Handle amount change
+                      }}
+                      size="small"
+                      sx={{ width: '120px' }}
+                    />
+                  </TableCell>
                 </TableRow>
               ))}
               <TableRow sx={{ '& td, & th': { fontWeight: 'bold' } }}>
@@ -107,9 +142,6 @@ const ROIEntry: React.FC = () => {
         <Typography variant="h5" gutterBottom sx={{ mb: 2 }}>
           FIXED COST MASTER
         </Typography>
-        <Typography variant="subtitle2" gutterBottom>
-          (FORMULA FOR TOTAL EXPENSE = NOS * RATE )
-        </Typography>
         {/* Part A table */}
         <TableContainer component={Paper} variant="elevation" elevation={0} sx={{ mb: 2 }}>
           <Table size="small">
@@ -125,8 +157,28 @@ const ROIEntry: React.FC = () => {
               {fixedCostA.map((row, idx) => (
                 <TableRow key={idx}>
                   <TableCell component="th" scope="row">{row.expenseHead}</TableCell>
-                  <TableCell align="right">{row.nos}</TableCell>
-                  <TableCell align="right">{row.rate}</TableCell>
+                  <TableCell align="right">
+                    <TextField
+                      type="number"
+                      value={row.nos}
+                      onChange={(e) => {
+                        // Handle nos change
+                      }}
+                      size="small"
+                      sx={{ width: '120px' }}
+                    />
+                  </TableCell>
+                  <TableCell align="right">
+                    <TextField
+                      type="number"
+                      value={row.rate}
+                      onChange={(e) => {
+                        // Handle rate change
+                      }}
+                      size="small"
+                      sx={{ width: '120px' }}
+                    />
+                  </TableCell>
                   <TableCell align="right">{row.expense}</TableCell>
                 </TableRow>
               ))}
@@ -148,7 +200,17 @@ const ROIEntry: React.FC = () => {
               {fixedCostB.map((row, idx) => (
                 <TableRow key={idx}>
                   <TableCell component="th" scope="row">{row.expenseHead}</TableCell>
-                  <TableCell align="right">{row.expense}</TableCell>
+                  <TableCell align="right">
+                    <TextField
+                      type="number"
+                      value={row.expense}
+                      onChange={(e) => {
+                        // Handle expense change
+                      }}
+                      size="small"
+                      sx={{ width: '120px' }}
+                    />
+                  </TableCell>
                   <TableCell align="center">
                     <Button variant="contained" size="small">
                       UPDATE
@@ -238,39 +300,47 @@ const ROIEntry: React.FC = () => {
         <Typography variant="h5" gutterBottom sx={{ mb: 2 }}>
           ROI
         </Typography>
-        <Typography variant="subtitle2">
-          (FORMULA FOR NP = GROSS PROFIT - TOTAL EXPESES )
-        </Typography>
-        <Typography variant="subtitle2" gutterBottom>
-          (FORMULA FOR ROI= NP/ TOTAL INV AMOUNT * 100)
-        </Typography>
-        <Grid container spacing={1} alignItems="center" sx={{ mt: 1 }}>
-          {[ 
-            { label: "Total Gross Profit", value: roiSummaryData.totalGrossProfit },
-            { label: "Total Investment In Amount", value: roiSummaryData.totalInvestmentAmount },
-            { label: "Total Investment in Days", value: roiSummaryData.totalInvestmentDays },
-            { label: "Total Expenditure", value: roiSummaryData.totalExpenditure },
-            { label: "Net Profit", value: roiSummaryData.netProfit },
-          ].map(item => (
-            <React.Fragment key={item.label}>
-              {/* @ts-ignore */}
-              <Grid item xs={6} sm={8}><Typography variant="body1">{item.label}</Typography></Grid>
-              {/* @ts-ignore */}
-              <Grid item xs={6} sm={4}><Typography variant="body1" align="right">{item.value}</Typography></Grid>
-            </React.Fragment>
-          ))}
-          {/* ROI row with Button */}
-          {/* @ts-ignore */}
-          <Grid item xs={6} sm={8}><Typography variant="body1" sx={{ fontWeight: 'bold' }}>ROI</Typography></Grid>
-          {/* @ts-ignore */}
-          <Grid item xs={3} sm={2}><Typography variant="body1" align="right" sx={{ fontWeight: 'bold' }}>{roiSummaryData.roiPercent}</Typography></Grid>
-          {/* @ts-ignore */}
-          <Grid item xs={3} sm={2} textAlign={{xs: 'right', sm: 'left'}}>
-            <Button variant="contained" size="small" disabled sx={{width: '100%'}}>
-              CALCULATE
-            </Button>
-          </Grid>
-        </Grid>
+        <TableContainer component={Paper} variant="elevation" elevation={0}>
+          <Table size="small">
+            <TableHead>
+              <TableRow>
+                <TableCell>Description</TableCell>
+                <TableCell align="right">Amount</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow>
+                <TableCell>Total Gross Profit</TableCell>
+                <TableCell align="right">{roiSummaryData.totalGrossProfit}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Total Investment In Amount</TableCell>
+                <TableCell align="right">{roiSummaryData.totalInvestmentAmount}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Total Investment in Days</TableCell>
+                <TableCell align="right">{roiSummaryData.totalInvestmentDays}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Total Expenditure</TableCell>
+                <TableCell align="right">{roiSummaryData.totalExpenditure}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Net Profit</TableCell>
+                <TableCell align="right">{roiSummaryData.netProfit}</TableCell>
+              </TableRow>
+              <TableRow sx={{ '& td': { fontWeight: 'bold' } }}>
+                <TableCell>ROI</TableCell>
+                <TableCell align="right">{roiSummaryData.roiPercent}</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <Box sx={{ mt: 2, display: 'flex', justifyContent: 'flex-end' }}>
+          <Button variant="contained" size="small" disabled>
+            CALCULATE
+          </Button>
+        </Box>
       </Paper>
 
       {/* 7) ROI Assist */}

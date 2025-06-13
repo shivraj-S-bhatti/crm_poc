@@ -171,19 +171,20 @@ export interface RoiAssist {
   turnoverGap: string;          // e.g., "₹2.6 CR AWAY"
 }
 
-export const roiAssistData: RoiAssist = {
-  currentROI: "1.08%",
+export const roiAssistData = {
+  currentROI: "1.24%",
   targetROI: "1.5%",
-  currentGrossProfit: "₹12,69,500",
-  idealGrossProfit: "₹16,64,994",
-  gap: "₹3,95,494",
-  insight: "TO ACHIEVE ROI OF 1.5%, YOU NEED TO INCREASE YOUR GROSS PROFIT BY ₹3,95,494.",
+  currentGrossProfit: "₹1,04,400.00",
+  idealGrossProfit: "₹1,26,450.00",
+  gap: "₹22,050.00",
+  insight: "To achieve the target ROI of 1.5%, you need to increase your gross profit by ₹22,050.00",
   actionItems: [
-    "📈  BOOST CIGARETTE SALES: EVEN A 2–3% GROWTH RATE ADDS SIGNIFICANT VALUE DUE TO THE HIGH BASE.",
-    "🧃  FOCUS ON FOODS & PCP: THESE HAVE HIGHER MARGINS (2.85%–3%), BOOST SHARE OF THESE.",
-    "🔁  ENGAGE MORE OUTLETS IN PCP: UTILIZE NON-MOVER ROTATION PLAN TO UNLOCK SALE POTENTIAL.",
+    "Increase sales volume in high-margin categories",
+    "Optimize inventory levels to reduce holding costs",
+    "Review and adjust pricing strategy",
+    "Focus on customer retention and loyalty programs"
   ],
-  currentTurnover: "₹83.7 CR",
-  idealTurnover: "₹86.3 CR",
-  turnoverGap: "YOU ARE JUST ₹2.6 CR AWAY FROM YOUR TARGET!",
+  currentTurnover: "₹8.37 Crores",
+  idealTurnover: "₹8.63 Crores",
+  turnoverGap: "₹0.26 Crores"
 }; 
